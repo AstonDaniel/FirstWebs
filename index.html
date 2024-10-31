@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Spots Around the World</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f0f4f8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+
+        .header h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #4a5568;
+            margin-bottom: 30px;
+        }
+
+        .filter-container {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Hide radio buttons but keep them accessible */
+        .filter-container input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .filter-container label {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .filter-container label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .filter-container input[type="radio"]:checked + label {
+            background: #4299e1;
+            color: white;
+        }
+
+        .locations {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .location-card {
+            display: none; /* Hidden by default */
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .location-image {
+            width: 100%;
+            height: 200px;
+            position: relative;
+            background: #ddd;
+        }
+
+        .location-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .continent-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+
+        .location-info {
+            padding: 20px;
+        }
+
+        .location-info h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+
+        .location-info p {
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Show all cards when 'all' is selected */
+        #all:checked ~ .locations .location-card {
+            display: none;
+        }
+
+        /* Show only cards of selected continent */
+        #asia:checked ~ .locations .asia,
+        #europe:checked ~ .locations .europe,
+        #northamerica:checked ~ .locations .northamerica,
+        #southamerica:checked ~ .locations .southamerica,
+        #africa:checked ~ .locations .africa,
+        #oceania:checked ~ .locations .oceania {
+            display: block;
+        }
+
+        .details {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .details p {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .filter-container label {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Photography Spots Around the World</h1>
+            <p>Discover amazing locations for your next photoshoot</p>
+
+            <div class="filter-container">
+                <input type="radio" id="all" name="continent" checked>
+                <label for="all">All Locations</label>
+
+                <input type="radio" id="asia" name="continent">
+                <label for="asia">Asia</label>
+
+                <input type="radio" id="europe" name="continent">
+                <label for="europe">Europe</label>
+
+                <input type="radio" id="northamerica" name="continent">
+                <label for="northamerica">North America</label>
+
+                <input type="radio" id="southamerica" name="continent">
+                <label for="southamerica">South America</label>
+
+                <input type="radio" id="africa" name="continent">
+                <label for="africa">Africa</label>
+
+                <input type="radio" id="oceania" name="continent">
+                <label for="oceania">Oceania</label>
+            </div>
+        </div>
+
+        <div class="locations">
+            <!-- Santorini -->
+            <div class="location-card europe">
+                <div class="location-image">
+                    <img src="images/santorini.jpg" alt="Santorini, Greece">
+                    <span class="continent-tag">Europe</span>
+                </div>
+                <div class="location-info">
+                    <h3>Santorini, Greece</h3>
+                    <p>Famous for its white buildings and blue domes overlooking the Mediterranean.</p>
+                    <div class="details">
+                        <p><strong>Best Time:</strong> Early morning or sunset</p>
+                        <p><strong>Tips:</strong> Visit in shoulder season (April-May or September-October) to avoid crowds</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mount Fuji -->
+            <div class="location-card asia">
+                <div class="location-image">
+                    <img src="images/mount-fuji.jpg" alt="Mount Fuji, Japan">
+                    <span class="continent-tag">Asia</span>
+                </div>
+                <div class="location-info">
+                    <h3>Mount Fuji, Japan</h3>
+                    <p>Iconic snow-capped volcano, best photographed from nearby lakes.</p>
+                    <div class="details">
+                        <p><strong>Best Time:</strong> Early morning in winter</p>
+                        <p><strong>Tips:</strong> Check weather forecasts for clear skies</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machu Picchu -->
+            <div class="location-card southamerica">
+                <div class="location-image">
+                    <img src="images/machu-picchu.jpg" alt="Machu Picchu, Peru">
+                    <span class="continent-tag">South America</span>
+                </div>
+                <div class="location-info">
+                    <h3>Machu Picchu, Peru</h3>
+                    <p>Ancient Incan citadel set against dramatic mountain peaks.</p>
+                    <div class="details">
+                        <p><strong>Best Time:</strong> Early morning</p>
+                        <p><strong>Tips:</strong> Get permits well in advance and arrive before sunrise</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grand Canyon -->
+            <div class="location-card northamerica">
+                <div class="location-image">
+                    <img src="images/grand-canyon.jpg" alt="Grand Canyon, USA">
+                    <span class="continent-tag">North America</span>
+                </div>
+                <div class="location-info">
+                    <h3>Grand Canyon, USA</h3>
+                    <p>Vast canyon carved by the Colorado River, offering dramatic landscapes.</p>
+                    <div class="details">
+                        <p><strong>Best Time:</strong> Sunrise or sunset</p>
+                        <p><strong>Tips:</strong> South Rim is most accessible but North Rim offers unique views</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Victoria Falls -->
+            <div class="location-card africa">
+                <div class="location-image">
+                    <img src="images/victoria-falls.jpg" alt="Victoria Falls, Zimbabwe">
+                    <span class="continent-tag">Africa</span>
+                </div>
+                <div class="location-info">
+                    <h3>Victoria Falls, Zimbabwe</h3>
+                    <p>One of the world's largest waterfalls, creating spectacular mist effects.</p>
+                    <div class="details">
+                        <p><strong>Best Time:</strong> February to May</p>
+                        <p><strong>Tips:</strong> Bring protective gear for camera equipment due to the spray</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Great Barrier Reef -->
+            <div class="location-card oceania">
+                <div class="location-image">
+                    <img src="images/great-barrier-reef.jpg" alt="Great Barrier Reef, Australia">
+                    <span class="continent-tag">Oceania</span>
+                </div>
+                <div class="location-info">
+                    <h3>Great Barrier Reef, Australia</h3>
+                    <p>World's largest coral reef system with vibrant marine life.</p>
+                    <div class="details">
+                        <p><strong>Best Time:</strong> June to October</p>
+                        <p><strong>Tips:</strong> Use underwater housing and wide-angle lenses</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
